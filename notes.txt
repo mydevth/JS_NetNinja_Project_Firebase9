@@ -1,0 +1,76 @@
+#run in power shell terminal
+npm init -y
+npm i webpack webpack-cli -D
+
+create file webpack.config.js  (root folder)
+----------------------------------
+const path = require('path')
+
+module.exports = {
+    mode: 'development',
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
+    devtool: 'eval-source-map',
+    watch: true,
+}
+-------------------------------------
+
+insert "build" : "webpack"  in package.jaon
+-------------------------
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"      <------------------------------
+  },
+
+-----------------------------
+
+test การเรียก index.js โดยใส่ ในไฟล์ index.js
+console.log('Hello from index.js');
+
+- เรียก shell พิมพ์
+npm run build       (shell จะทำงาน ค้างอยู่ เมื่อ index.js มีการเปลี่ยนแปลงจะ run ตลอดเวลา
+
+ จะสร้างไฟล์ bundle.js ขึ้นมา ใน /dist/bundle.js
+
+- เพิ่ม <script src="bundle.js"></script> ใน index.html
+
+- VS Code install plug-in Live server 
+   และ view ดู จะพบข้อความ ตาม index.js
+
+--------
+Firebase console
+-create project / app   /Tab General / Config
+copy config  -> index.js
+
+
+----------------------
+new Shell อีกอัน   ติดตั้ง firebase
+   npm install firebase
+
+- ------------------
+import / เรียน function ใน index.js
+
+import{ initializeApp } from 'firebase/app'                                                              //import
+
+const firebaseConfig = {								
+    apiKey: "AIzaSyAwtfkYNMElyrWLYYzCTDOSYqMucwn4zwI",
+    authDomain: "javascript-section16.firebaseapp.com",
+    projectId: "javascript-section16",
+    storageBucket: "javascript-section16.appspot.com",
+    messagingSenderId: "195981413411",
+    appId: "1:195981413411:web:d749a983d95239dc007596"
+  };
+  
+  initializeApp(firebaseConfig)                                                        //เรียก function
+
+
+----------------------------------
+create Firestore Database
+-create collection
+
+
+
+
